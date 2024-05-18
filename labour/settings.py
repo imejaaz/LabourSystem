@@ -42,8 +42,11 @@ INSTALLED_APPS = [
     'ceo',
     'supervisor',
     'labor',
+    'recruitment',
 
 ]
+
+AUTH_USER_MODEL = 'account.User'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
