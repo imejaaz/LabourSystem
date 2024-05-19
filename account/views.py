@@ -10,7 +10,7 @@ def login_view(request):
         user = authenticate(request, email=email, password=password)
         if user is not None:
             login(request, user)
-            redirect('home')
+            return redirect('recruitment:dashboard')
         else:
             messages.error(request, 'invalid credentials')
             redirect('login')

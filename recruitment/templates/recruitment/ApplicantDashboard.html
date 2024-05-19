@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Applicant Dashboard</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        h1 {
+            margin-top: 30px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        h2 {
+            margin-top: 20px;
+        }
+        form {
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to Your Applicant Dashboard</h1>
+
+     {% if messages %}
+            {% for message in messages %}
+        {{ message }}
+            {% endfor %}
+    {% endif %}
+
+        <h2>Application Status</h2>
+        <p>Status: {{ application_status }}</p>
+
+        <h2>Your Score</h2>
+        <p>Score: {{ score }}</p>
+
+        <h2>Apply for job</h2>
+        <form action="{% url 'recruitment:apply' %}" method="GET">
+            <input type="submit" class="btn btn-primary" value="Apply Now">
+        </form>
+    </div>
+</body>
+
+
+</html>
