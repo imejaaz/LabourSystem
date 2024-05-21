@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="bdc55c5f-dde7-494f-bf66-9071e6ec6882" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/account/templates/account/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/account/templates/account/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account/templates/account/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/account/templates/account/signup.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ceo/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/ceo/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ceo/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/ceo/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ceo/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ceo/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/labor/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/labor/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/labor/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/labor/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/labor/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/labor/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/labor/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/labor/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/labour/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/labour/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/labour/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/labour/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/recruitment/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/recruitment/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/recruitment/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/recruitment/migrations/0002_remove_interviewresults_position_and_more.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/recruitment/migrations/0003_rename_interviewscore_interviewresults_score.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/recruitment/migrations/0004_interviewresults_name.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/recruitment/migrations/0005_remove_interviewresults_user.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/recruitment/migrations/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/recruitment/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/recruitment/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/recruitment/templates/recruitment/ApplicantDashboard.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/recruitment/templates/recruitment/ApplicantForm.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/recruitment/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/recruitment/views.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="2gl5LOogyWsVlai8bO2dZDZcIst" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="bdc55c5f-dde7-494f-bf66-9071e6ec6882" name="Changes" comment="" />
+      <created>1716259269142</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1716259269142</updated>
+    </task>
+    <servers />
+  </component>
+</project>

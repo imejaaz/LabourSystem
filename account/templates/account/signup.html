@@ -4,35 +4,129 @@
     <meta charset="UTF-8">
     <title>Signup</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f8f9fa;
+            margin: 0;
+        }
+
+        .container-fluid {
+            max-width: 1200px;
+            background: #ffffff;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .row {
+            flex-grow: 1;
+        }
+
+        .col-md-6 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .img-fluid {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
+
+        .form-container {
+            max-width: 500px;
+            padding: 40px;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        label {
+            color: #555;
+        }
+
+        .form-control {
+            border-radius: 5px;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        a {
+            color: #007bff;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-    <div class="container mt-5">
-        <h2>Signup</h2>
-
-          {% for message in messages %}
-              <div class="alert ">            {{ message }}        </div>
-            {% endfor %}
-
-        <form method="post" novalidate>
-
-
-
-            {% csrf_token %}
-
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" name="email" class="form-control" id="email" required>
+    <div class="container-fluid d-flex h-100">
+        <div class="row flex-fill">
+            <div class="col-md-6 p-0 d-none d-md-block">
+                <img sr="/abc.jpg" alt="Labor Image" class="img-fluid h-100">
             </div>
-            <div class="form-group">
-                <label for="password1">Password</label>
-                <input type="password" name="password" class="form-control" id="password1" required>
+            <div class="col-md-6 bg-light d-flex align-items-center">
+                <div class="form-container">
+                    <h2>Signup</h2>
+                    <!-- Assuming Django template engine will handle messages -->
+                    {% for message in messages %}
+                        <div class="alert alert-danger">{{ message }}</div>
+                    {% endfor %}
+                    <form method="post" novalidate>
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" name="email" class="form-control" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password1">Password</label>
+                            <input type="password" name="password" class="form-control" id="password1" required>
+                            <small class="form-text text-muted">Password must be at least 8 characters long, contain uppercase, lowercase letters, and a number.</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="password2">Confirm Password</label>
+                            <input type="password" name="confirm_password" class="form-control" id="password2" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Signup</button>
+                    </form>
+                    <div class="form-group mt-3">
+                        <a href="{% url 'login' %}">Already have an account?</a>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="password2">Confirm Password</label>
-                <input type="password" name="confirm_password" class="form-control" id="password2" required>
-            </div>
-            <button type="submit" class="btn btn-primary">Signup</button>
-        </form>
+        </div>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const password1 = document.getElementById('password1');
+            const password2 = document.getElementById('password2');
+            const form = document.querySelector('form');
+
+            form.addEventListener('submit', function(event) {
+                if (password1.value !== password2.value) {
+                    event.preventDefault();
+                    alert('Passwords do not match!');
+                    return;
+                }
+
+                const passwordValidation = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
+                if (!passwordValidation.test(password1.value)) {
+                    event.preventDefault();
+                    alert('Password must be at least 8 characters long and contain uppercase letters, lowercase letters, and a number.');
+                }
+            });
+        });
+    </script>
 </body>
 </html>

@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from .forms import ApplicantForm
 from django.contrib import messages
-
+from .models import *
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import ApplicantForm
@@ -25,9 +25,16 @@ def applicant_form_view(request):
         else:
             messages.error(request, 'There was an error with your form. Please check the details and try again.')
 
-    return render(request, 'recruitment/ApplicantForm.html', {'form': ApplicantForm()})
+    return render(request, 'recruitment/Form.html', {'form': ApplicantForm()})
 
 
 
 def Applicant_Dashboard_view(request):
-        return render(request, 'recruitment/ApplicantDashboard.html')
+
+        user = User.objects.get(email='ranaajiz121@gmail.com')
+        print(user)
+        app = user.applicant
+        print(app)
+
+
+        return render(request, 'recruitment/Dashboard.html')

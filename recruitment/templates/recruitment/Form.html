@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Applicant Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url('E:\uo projects\LabourSystem\recruitment\static\recruitment\lbr.jpg') no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 500px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="tel"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="tel"]:focus,
+        textarea:focus,
+        select:focus {
+            border-color: #007BFF;
+            box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            background-color: #007BFF;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        #message {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        .error {
+            color: red;
+        }
+
+        .success {
+            color: green;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <h1>Applicant Form</h1>
+
+        {% if messages %}
+            {% for message in messages %}
+             <div class="alert alert-success" role="alert">
+                  {{ message }}
+             </div>
+            {% endfor %}
+        {% endif %}
+
+        <form id="userForm" method="POST" action="{% url 'recruitment:apply' %}">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="cnic">CNIC:</label>
+                <input type="text" id="cnic" name="cnic" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+
+            <div class="form-group">
+                <label for="gender">Gender:</label>
+                <select id="gender" name="gender" required>
+                    <option value="M">Male</option>
+                    <option value="F">Female</option>
+                    <option value="O">Other</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="address">Address:</label>
+                <textarea id="address" name="address" rows="2" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="skill">Skill Set:</label>
+                <textarea id="skill" name="skill" rows="2" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="work_experience">Work Experience:</label>
+                <textarea id="work_experience" name="work_experience" rows="2" required></textarea>
+            </div>
+
+            <input type="submit" value="Submit">
+        </form>
+        <div id="message"></div>
+    </div>
+
+<!--    <script>-->
+<!--        document.getElementById('userForm').addEventListener('submit', function(e) {-->
+<!--            e.preventDefault();-->
+
+<!--            const formData = new FormData(this);-->
+<!--            const message = document.getElementById('message');-->
+
+<!--            fetch(this.action, {-->
+<!--                method: this.method,-->
+<!--                body: formData,-->
+<!--                headers: {-->
+<!--                    'Accept': 'application/json'-->
+<!--                }-->
+<!--            })-->
+<!--            .then(response => {-->
+<!--                if (!response.ok) {-->
+<!--                    throw new Error('Network response was not ok');-->
+<!--                }-->
+<!--                return response.json();-->
+<!--            })-->
+<!--            .then(data => {-->
+<!--                message.textContent = 'Form submitted successfully!';-->
+<!--                message.className = 'success';-->
+<!--                this.reset();  // Reset form fields after successful submission-->
+<!--            })-->
+<!--            .catch(error => {-->
+<!--                message.textContent = 'There was an error submitting the form.';-->
+<!--                message.className = 'error';-->
+<!--                console.error('Error:', error);-->
+<!--            });-->
+<!--        });-->
+<!--    </script>-->
+</body>
+</html>
