@@ -1,10 +1,12 @@
 from django.db import models
 from account.models import User
-
+from datetime import timezone, date
+from django.core.exceptions import ValidationError
 class Labor(models.Model):
     POST_CHOICES = [
         ('labor', 'Labor'),
         ('supervisor', 'Supervisor'),
+        ('ceo', 'CEO'),
     ]
 
     GENDER_CHOICES = [
@@ -48,3 +50,47 @@ class Labor(models.Model):
         verbose_name = "Labor"
         verbose_name_plural = "Labors"
         ordering = ['first_name', 'last_name']
+
+
+class Attendance(models.Model):
+    ATTENDANCE_CHOICES = [
+        ('present', 'Present'),
+        ('absent', 'Absent'),
+        ('leave', 'Leave')
+    ]
+
+    labor = models.ForeignKey(Labor, on_delete=models.CASCADE, related_name="attendance")
+    date = models.DateField(auto_now_add=True)
+    check_in = models.DateTimeField(auto_now_add=True)
+    status = models.CharField(max_length=10, choices=ATTENDANCE_CHOICES)
+
+    def save(self, *args, **kwargs):
+        if not self.pk:
+            if Attendance.objects.filter(labor=self.labor, date=date.today()).exists():
+                raise ValidationError('Attendance for this labor on this date already exists.')
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return f"{self.labor} - {self.date}"
+    class Meta:
+        unique_together = ('labor', 'date')
+        verbose_name_plural = "Attendance"
+
+
+class HourlyAttendance(models.Model):
+    ATTENDANCE_CHOICES = [
+        ('present', 'Present'),
+        ('absent', 'Absent'),
+        ('leave', 'Leave')
+    ]
+
+    attendance = models.ForeignKey(Attendance, on_delete=models.CASCADE)
+    check_in = models.DateTimeField(auto_now_add=True)
+    status = models.CharField(max_length=10, choices=ATTENDANCE_CHOICES)
+
+    def __str__(self):
+        return f"{self.attendance} - {self.status}"
+
+    class Meta:
+        verbose_name_plural = "Hourly Attendance"
+        unique_together = ('check_in', 'attendance')
