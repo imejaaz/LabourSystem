@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supervisor Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    display: flex;
+    background-color: #f4f7fc;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #007BFF;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.logo {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.nav {
+    width: 100%;
+}
+
+.nav-item {
+    display: block;
+    padding: 15px;
+    color: #fff;
+    text-decoration: none;
+    margin: 10px 0;
+    text-align: center;
+    border-radius: 8px;
+}
+
+.nav-item:hover {
+    background-color: #0056b3;
+}
+
+.main-content {
+    flex: 1;
+    padding: 20px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.header h1 {
+    margin: 0;
+}
+
+.search-bar input {
+    padding: 10px;
+    width: 200px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+.overview {
+    display: flex;
+    justify-content: space-between;
+}
+
+.profile, .stats, .calendar {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.profile {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.profile img {
+    width: 50px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.profile-info {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.growth-analyst {
+    margin-top: 20px;
+}
+
+.stats {
+    flex: 1;
+    display: flex;
+    justify-content: space-around;
+    margin-right: 20px;
+}
+
+.stat {
+    text-align: center;
+}
+
+.calendar {
+    flex: 2;
+}
+
+.calendar-content {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.day {
+    background-color: #e9f0ff;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.tasks .task {
+    background-color: #ffefef;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo">Logo</div>
+        <nav class="nav">
+            <a href="#" class="nav-item">Dashboard</a>
+            <a href="#" class="nav-item">Teams</a>
+            <a href="#" class="nav-item">Projects</a>
+            <a href="#" class="nav-item">Settings</a>
+        </nav>
+    </div>
+    <div class="main-content">
+        <header class="header">
+            <h1>Overview</h1>
+            <div class="search-bar">
+                <input type="text" placeholder="Search...">
+            </div>
+        </header>
+        <div class="overview">
+            <div class="profile">
+                <img src="profile.jpg" alt="Profile Picture">
+                <div class="profile-info">
+                    <h2>Patrick Kennedy</h2>
+                    <p>patrick@company.com</p>
+                </div>
+                <div class="growth-analyst">
+                    <h3>Growth Analyst</h3>
+                    <div class="chart">[Chart]</div>
+                </div>
+            </div>
+            <div class="stats">
+                <div class="stat">
+                    <h3>Projects in Progress</h3>
+                    <p>34</p>
+                </div>
+                <div class="stat">
+                    <h3>Completion Rate</h3>
+                    <p>92%</p>
+                </div>
+            </div>
+            <div class="calendar">
+                <h3>Calendar</h3>
+                <div class="calendar-content">
+                    <div class="day">7</div>
+                    <div class="day">8</div>
+                    <div class="day">9</div>
+                    <div class="day">10</div>
+                    <div class="day">11</div>
+                    <div class="day">12</div>
+                    <div class="day">13</div>
+                </div>
+                <div class="tasks">
+                    <div class="task">
+                        <h4>2021 Strategy for Bundle</h4>
+                        <p>9 Nov</p>
+                    </div>
+                    <div class="task">
+                        <h4>Product roadmap consideration</h4>
+                        <p>9 Nov</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
