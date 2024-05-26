@@ -11,3 +11,9 @@ urlpatterns = [
     path('recruitment/', include('recruitment.urls')),
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+
+admin.site.site_header = "Labour Management System"
+admin.site.site_title = "Labour Portal"
+admin.site.index_title = "Welcome to Labour portal"

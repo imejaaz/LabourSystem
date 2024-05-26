@@ -31,8 +31,6 @@ class SalaryRecord(models.Model):
 
     labor = models.ForeignKey(Labor, on_delete=models.CASCADE, related_name='salary_records')
     amount = models.DecimalField(max_digits=10, decimal_places=2)
-    start_date = models.DateField()
-    end_date = models.DateField(null=True, blank=True)  # null if the salary is still current
     month = models.CharField(max_length=20)  # e.g., "January 2023"
     days_worked = models.IntegerField()  # Number of days worked in the month
     extra_hours = models.DecimalField(max_digits=5, decimal_places=2, default=0)  # Extra hours worked
@@ -41,3 +39,15 @@ class SalaryRecord(models.Model):
 
     def __str__(self):
         return f"{self.labor} - {self.amount} for {self.month} (Days worked: {self.days_worked}, Extra hours: {self.extra_hours}, Status: {self.get_status_display()})"
+
+
+class Project(models.Model):
+    name = models.CharField(max_length=255)
+    description = models.TextField()
+    start_date = models.DateField()
+    end_date = models.DateField(null=True, blank=True)
+    progress_report = models.DecimalField(max_digits=5, decimal_places=2, default=0.00)  # Percentage value between 0.00 and 100.00
+    members = models.ManyToManyField(User, related_name='projects')
+
+    def __str__(self):
+        return self.name

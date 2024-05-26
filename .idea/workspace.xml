@@ -5,15 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bdc55c5f-dde7-494f-bf66-9071e6ec6882" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/LabourSystem.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account/templates/account/abc.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/account/templates/account/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/account/templates/account/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/account/templates/account/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/account/templates/account/signup.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ceo/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/ceo/admin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ceo/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/ceo/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ceo/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ceo/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ceo/templates/ceo/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/ceo/templates/ceo/dashboard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ceo/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/ceo/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/supervisor/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/supervisor/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/supervisor/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/supervisor/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/supervisor/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/supervisor/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/supervisor/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/supervisor/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/labor/templates/labor/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/labor/templates/labor/dashboard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/labour/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/labour/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/labour/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/labour/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/recruitment/static/recruitment/lbr.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/recruitment/templates/recruitment/Dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/recruitment/templates/recruitment/Dashboard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/recruitment/templates/recruitment/Form.html" beforeDir="false" afterPath="$PROJECT_DIR$/recruitment/templates/recruitment/Form.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,9 +52,20 @@
     "DefaultHtmlFileTemplate": "HTML File",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main"
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "E:/uo projects/LabourSystem/account/templates/account"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\uo projects\LabourSystem\account\templates\account" />
+      <recent name="E:\uo projects\LabourSystem\account\static\account" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\uo projects\LabourSystem\account\static\account\images" />
+      <recent name="E:\uo projects\LabourSystem\account\static\account" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">

@@ -1,132 +1,100 @@
+{%load static%}
 <!DOCTYPE html>
 <html lang="en">
+
+
 <head>
-    <meta charset="UTF-8">
-    <title>Signup</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <style>
-        body {
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #f8f9fa;
-            margin: 0;
-        }
-
-        .container-fluid {
-            max-width: 1200px;
-            background: #ffffff;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        .row {
-            flex-grow: 1;
-        }
-
-        .col-md-6 {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .img-fluid {
-            object-fit: cover;
-            width: 100%;
-            height: 100%;
-        }
-
-        .form-container {
-            max-width: 500px;
-            padding: 40px;
-        }
-
-        h2 {
-            color: #333;
-            margin-bottom: 20px;
-        }
-
-        label {
-            color: #555;
-        }
-
-        .form-control {
-            border-radius: 5px;
-        }
-
-        .btn-primary {
-            background-color: #007bff;
-            border-color: #007bff;
-        }
-
-        a {
-            color: #007bff;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+  <title>SIGNUP</title>
+  <!-- General CSS Files -->
+  <link rel="stylesheet" href="{% static 'account/css/app.min.css' %}">
+  <link rel="stylesheet" href="{% static 'account/css/selectric.css' %}">
+  <!-- Template CSS -->
+<!--  <link rel="stylesheet" href="{% static 'account/css/style.css' %}">-->
+  <link rel="stylesheet" href="{% static 'account/css/components.css' %}">
+  <!-- Custom style CSS -->
+  <link rel="stylesheet" href="assets/css/custom.css">
 </head>
+
 <body>
-    <div class="container-fluid d-flex h-100">
-        <div class="row flex-fill">
-            <div class="col-md-6 p-0 d-none d-md-block">
-                <img sr="/abc.jpg" alt="Labor Image" class="img-fluid h-100">
-            </div>
-            <div class="col-md-6 bg-light d-flex align-items-center">
-                <div class="form-container">
-                    <h2>Signup</h2>
-                    <!-- Assuming Django template engine will handle messages -->
-                    {% for message in messages %}
+  <div class="loader"></div>
+  <div id="app">
+    <section class="section">
+      <div class="container mt-5">
+        <div class="row">
+          <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-8 offset-lg-2 col-xl-8 offset-xl-2">
+            <div class="card card-primary">
+              <div class="card-header">
+                <h4>Register</h4>
+              </div>
+              <div class="card-body">
+                <form method="POST" action="{% url 'signup' %}">
+                   {% csrf_token %}
+
+
+                   {% for message in messages %}
                         <div class="alert alert-danger">{{ message }}</div>
                     {% endfor %}
-                    <form method="post" novalidate>
-                        {% csrf_token %}
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" name="email" class="form-control" id="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="password1">Password</label>
-                            <input type="password" name="password" class="form-control" id="password1" required>
-                            <small class="form-text text-muted">Password must be at least 8 characters long, contain uppercase, lowercase letters, and a number.</small>
-                        </div>
-                        <div class="form-group">
-                            <label for="password2">Confirm Password</label>
-                            <input type="password" name="confirm_password" class="form-control" id="password2" required>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Signup</button>
-                    </form>
-                    <div class="form-group mt-3">
-                        <a href="{% url 'login' %}">Already have an account?</a>
+
+
+                  <div class="form-group">
+                    <label for="email">Email</label>
+                    <input id="email" type="email" class="form-control" name="email">
+                    <div class="invalid-feedback">
                     </div>
-                </div>
+                  </div>
+                  <div class="row">
+                    <div class="form-group col-6">
+                      <label for="password" class="d-block">Password</label>
+                      <input id="password" type="password" class="form-control pwstrength" data-indicator="pwindicator"
+                        name="password">
+                      <div id="pwindicator" class="pwindicator">
+                        <div class="bar"></div>
+                        <div class="label"></div>
+                      </div>
+                    </div>
+                    <div class="form-group col-6">
+                      <label for="password2" class="d-block">Password Confirmation</label>
+                      <input id="password2" type="password" class="form-control" name="confirm_password">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="custom-control custom-checkbox">
+                      <input type="checkbox" name="agree" class="custom-control-input" id="agree">
+                      <label class="custom-control-label" for="agree">I agree with the terms and conditions</label>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-lg btn-block">
+                      Register
+                    </button>
+                  </div>
+                </form>
+              </div>
+              <div class="mb-4 text-muted text-center">
+                Already Registered? <a href="auth-login.html">Login</a>
+              </div>
             </div>
+          </div>
         </div>
-    </div>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const password1 = document.getElementById('password1');
-            const password2 = document.getElementById('password2');
-            const form = document.querySelector('form');
+      </div>
+    </section>
+  </div>
 
-            form.addEventListener('submit', function(event) {
-                if (password1.value !== password2.value) {
-                    event.preventDefault();
-                    alert('Passwords do not match!');
-                    return;
-                }
-
-                const passwordValidation = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
-                if (!passwordValidation.test(password1.value)) {
-                    event.preventDefault();
-                    alert('Password must be at least 8 characters long and contain uppercase letters, lowercase letters, and a number.');
-                }
-            });
-        });
-    </script>
+  <!-- General JS Scripts -->
+  <script src="assets/js/app.min.js"></script>
+  <!-- JS Libraies -->
+  <script src="js/jquery.pwstrength.min.js"></script>
+  <script src="assets/bundles/jquery-pwstrength/jquery.pwstrength.min.js"></script>
+  <script src="assets/bundles/jquery-selectric/jquery.selectric.min.js"></script>
+  <!-- Page Specific JS File -->
+  <script src="assets/js/page/auth-register.js"></script>
+  <!-- Template JS File -->
+  <script src="assets/js/scripts.js"></script>
+  <!-- Custom JS File -->
+  <script src="assets/js/custom.js"></script>
 </body>
+
+
 </html>

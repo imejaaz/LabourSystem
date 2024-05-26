@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,65 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Applicant Dashboard</title>
     <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {
-            background: #f0f0f0;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-        .container {
-            background: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            width: 90%;
-            max-width: 600px;
-            animation: fadeIn 1s ease-in-out;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        h1 {
-            margin-top: 30px;
-            margin-bottom: 30px;
-            text-align: center;
-            color: #333;
-        }
-        h2 {
-            margin-top: 20px;
-            color: #007BFF;
-        }
-        form {
-            margin-top: 20px;
-            text-align: center;
-        }
-        .btn-primary {
-            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .btn-primary:hover {
-            background-color: #0056b3;
-            transform: scale(1.05);
-            box-shadow: 0 0 20px rgba(0,0,0,0.3);
-        }
-        #message {
-            text-align: center;
-            font-size: 16px;
-            margin-top: 20px;
-        }
-        /* Real-time data update animation */
-        #applicationStatus, #score {
-            transition: color 0.5s ease;
-        }
-        /* Blur effect */
-        .blur {
-            filter: blur(5px);
-        }
-    </style>
+<!--    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">-->
+
+    <link rel="stylesheet" href="{% static 'recruitment/css/dashboard.css' %}">
+
 </head>
 <body>
     <div class="container">
