@@ -9,7 +9,7 @@ class LaborAdmin(admin.ModelAdmin):
     readonly_fields = ('labor_id',)
     fieldsets = (
         (None, {
-            'fields': ('user', 'labor_id', 'first_name', 'last_name', 'cnic', 'phone', 'gender', 'address', 'post', 'basic_pay', 'date_of_birth', 'date_of_hire')
+            'fields': ('user', 'labor_id', 'first_name', 'last_name', 'cnic', 'phone', 'gender', 'address', 'post', 'basic_pay', 'date_of_birth', )
         }),
     )
 

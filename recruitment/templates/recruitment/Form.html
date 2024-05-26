@@ -23,8 +23,12 @@
         <form id="userForm" method="POST" action="{% url 'recruitment:apply' %}">
             {% csrf_token %}
             <div class="form-group">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required>
+                <label for="name">First Name:</label>
+                <input type="text" id="name" name="first_name" required>
+            </div>
+             <div class="form-group">
+                <label for="name">Last Name:</label>
+                <input type="text" id="name" name="last_name" required>
             </div>
 
             <div class="form-group">
@@ -35,6 +39,11 @@
             <div class="form-group">
                 <label for="phone">Phone Number:</label>
                 <input type="tel" id="phone" name="phone" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Date of birth:</label>
+                <input type="date" id="phone" name="dob" required>
             </div>
 
             <div class="form-group">

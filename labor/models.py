@@ -23,10 +23,10 @@ class Labor(models.Model):
     phone = models.CharField(max_length=11, unique=True, verbose_name="Phone Number")
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES, verbose_name="Gender")
     address = models.TextField(verbose_name="Address")
-    post = models.CharField(max_length=10, choices=POST_CHOICES, verbose_name="Post")
+    post = models.CharField(max_length=10, choices=POST_CHOICES, verbose_name="Post", default = 'Labor')
     basic_pay = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Basic Pay")
     date_of_birth = models.DateField(verbose_name="Date of Birth")
-    date_of_hire = models.DateField(verbose_name="Date of Hire")
+    date_of_hire = models.DateField(verbose_name="Date of Hire", auto_now_add=True)
 
     def save(self, *args, **kwargs):
         if not self.labor_id:

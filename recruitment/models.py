@@ -10,7 +10,9 @@ class Applicant(models.Model):
 
 
     user = models.ForeignKey(User, on_delete = models.CASCADE,  related_name = 'applicant')
-    name = models.CharField(max_length=100, verbose_name="Name")
+    first_name = models.CharField(max_length=100, verbose_name="Name")
+    last_name = models.CharField(max_length=100, verbose_name="Name")
+    dob = models.DateField()
     cnic = models.CharField(max_length=13, unique=True, verbose_name="CNIC")
     phone = models.CharField(max_length=11, unique=True, verbose_name="Phone Number")
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES, verbose_name="Gender")
@@ -46,4 +48,4 @@ class InterViewResults(models.Model):
     is_selected = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.applicant.name
+        return self.applicant.first_name

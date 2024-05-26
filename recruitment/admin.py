@@ -3,8 +3,8 @@ from .models import Applicant, InterViewResults
 
 @admin.register(Applicant)
 class ApplicantAdmin(admin.ModelAdmin):
-    list_display = ('name', 'application_id', 'cnic', 'phone',)
-    search_fields = ('name', 'application_id', 'cnic', 'phone')
+    list_display = ('first_name', 'application_id', 'cnic', 'phone',)
+    search_fields = ('first_name', 'application_id', 'cnic', 'phone')
     list_filter = ('gender',)
 
 @admin.register(InterViewResults)
