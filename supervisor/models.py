@@ -4,6 +4,7 @@ from labor.models import Labor
 
 class Application(models.Model):
     STATUS_CHOICES = [
+        ('save', 'Saved'),
         ('submitted', 'Submitted'),
         ('under_review', 'Under Review'),
         ('approved', 'Approved'),
@@ -14,7 +15,7 @@ class Application(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField()
     date_submitted = models.DateTimeField(auto_now_add=True)
-    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='submitted')
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='save')
     def __str__(self):
         return f"{self.labor} - {self.title} - {self.get_status_display()}"
 

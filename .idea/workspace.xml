@@ -6,37 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="bdc55c5f-dde7-494f-bf66-9071e6ec6882" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/account/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/account/migrations/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/account/templates/account/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/account/templates/account/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/account/templates/account/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/account/templates/account/signup.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/account/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/account/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/account/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/account/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ceo/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ceo/migrations/0002_alter_salaryadjustment_added_by.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ceo/migrations/0003_remove_salaryrecord_end_date_and_more.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ceo/migrations/0004_project.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ceo/migrations/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ceo/templates/ceo/applicant_profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/ceo/templates/ceo/applicant_profile.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ceo/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ceo/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/labor/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/labor/migrations/0002_alter_labor_post_attendance_hourlyattendance.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/labor/migrations/0003_alter_attendance_unique_together_and_more.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/labor/migrations/0004_alter_labor_date_of_hire_alter_labor_post.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/labor/migrations/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/labor/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/labor/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/labor/templates/labor/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/labor/templates/labor/dashboard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/labor/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/labor/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/labor/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/labor/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/recruitment/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/recruitment/migrations/0002_rename_name_interviewresults_applicant_and_more.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/recruitment/migrations/0003_alter_applicant_work_experience.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/recruitment/migrations/0004_rename_name_applicant_first_name_applicant_dob_and_more.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/recruitment/migrations/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/supervisor/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/supervisor/migrations/0002_alter_reviewercomment_commentator.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/supervisor/migrations/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/supervisor/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/supervisor/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/supervisor/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/supervisor/models.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
