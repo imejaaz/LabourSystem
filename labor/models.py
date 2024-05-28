@@ -28,6 +28,8 @@ class Labor(models.Model):
     date_of_birth = models.DateField(verbose_name="Date of Birth")
     date_of_hire = models.DateField(verbose_name="Date of Hire", auto_now_add=True)
 
+    def username(self):
+        return f'{self.first_name} {self.last_name}'
     def save(self, *args, **kwargs):
         if not self.labor_id:
             self.labor_id = self.generate_labor_id()

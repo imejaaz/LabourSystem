@@ -38,7 +38,9 @@ def labor_application_view(request):
     return render(request, 'labor/application.html', context={'labor':labor, 'applications':application})
 def application_detail_view(request, id):
     application = get_object_or_404(Application, id=id)
-    return render(request, 'labor/application_report.html', context={'application':application})
+    user = request.user
+    labor = get_object_or_404(Labor, user=user)
+    return render(request, 'labor/application_report.html', context={'application':application, 'labor':labor})
 def submit_application_view(request, id):
     application = get_object_or_404(Application, id=id)
     application.status = 'Submitted'
