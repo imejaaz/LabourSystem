@@ -34,6 +34,7 @@ def applicant_record(request, id):
 
         labor = register_labor(applicant, salary, post)
         if labor:
+            applicant.delete()
             messages.success(request, 'Labor registered successfully')
         else:
             messages.error(request, 'Failed to register labor')

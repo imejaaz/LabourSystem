@@ -15,7 +15,7 @@ class Labor(models.Model):
         ('O', 'Other'),
     ]
 
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='labors')
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='labors')
     labor_id = models.CharField(max_length=10, unique=True, editable=False, verbose_name="Labor ID")
     first_name = models.CharField(max_length=50, verbose_name="First Name")
     last_name = models.CharField(max_length=50, verbose_name="Last Name")
