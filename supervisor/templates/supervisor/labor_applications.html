@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supervisor Dashboard</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fc;
+        }
+        .sidebar {
+            height: 100vh;
+            background-color: #007BFF;
+            color: #fff;
+            padding: 20px;
+            position: fixed;
+        }
+        .sidebar .logo {
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .sidebar .nav-link {
+            color: #fff;
+        }
+        .sidebar .nav-link:hover {
+            background-color: #0056b3;
+        }
+        .main-content {
+            margin-left: 270px; /* width of the sidebar + some margin */
+            padding: 20px;
+        }
+        .profile img {
+            width: 50px;
+            border-radius: 50%;
+            margin-right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar d-flex flex-column">
+        <div class="logo">Logo</div>
+        <nav class="nav flex-column">
+            <a href="#" class="nav-link">Dashboard</a>
+            <a href="#" class="nav-link">Teams</a>
+            <a href="#" class="nav-link">Projects</a>
+            <a href="#" class="nav-link">Settings</a>
+        </nav>
+    </div>
+    <div class="main-content">
+        <header class="d-flex justify-content-between align-items-center mb-4">
+            <h1>Overview</h1>
+            <div class="search-bar">
+                <input type="text" class="form-control" placeholder="Search...">
+            </div>
+        </header>
+        <div class="container-fluid">
+            <div class="row mb-4">
+                <div class="col-lg-4">
+                    <div class="card">
+                        <div class="card-body d-flex align-items-center">
+                            <img src="profile.jpg" alt="Profile Picture" class="mr-3">
+                            <div>
+                                <h5 class="card-title mb-1">Patrick Kennedy</h5>
+                                <p class="card-text">patrick@company.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <h5 class="card-title">Projects in Progress</h5>
+                            <p class="card-text">34</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <h5 class="card-title">Completion Rate</h5>
+                            <p class="card-text">92%</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header">
+                    Applications
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Applicant</th>
+                                <th>Applicant ID</th>
+                                <th>Application ID</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                                <th>Review</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for app in applications %}
+                            <tr>
+                                <td>{{app.labor.username}}</td>
+                                <td>{{app.labor.labor_id}}</td>
+                                <td>{{app.app_id}}</td>
+
+                                <td>
+                                    <select class="form-control" onchange="handleStatusChange(this)">
+                                        <option value="pending">{{app.status}}</option>
+                                        <option value="under_review" data-url="{% url 'supervisor:process_application' app.id %}">Forward Next</option>
+                                        <option value="under_review" data-url="{% url 'supervisor:reject_application' app.id %}">Reject Application</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <textarea class="form-control" rows="2" placeholder="Write your review..."></textarea>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                            <!-- Add more rows as necessary -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    Calendar
+                </div>
+                <div class="card-body">
+                    <div class="d-flex justify-content-between mb-3">
+                        <div class="day bg-light p-3 rounded">7</div>
+                        <div class="day bg-light p-3 rounded">8</div>
+                        <div class="day bg-light p-3 rounded">9</div>
+                        <div class="day bg-light p-3 rounded">10</div>
+                        <div class="day bg-light p-3 rounded">11</div>
+                        <div class="day bg-light p-3 rounded">12</div>
+                        <div class="day bg-light p-3 rounded">13</div>
+                    </div>
+                    <div class="tasks">
+                        <div class="task bg-light p-3 rounded mb-2">
+                            <h5>2021 Strategy for Bundle</h5>
+                            <p>9 Nov</p>
+                        </div>
+                        <div class="task bg-light p-3 rounded mb-2">
+                            <h5>Product roadmap consideration</h5>
+                            <p>9 Nov</p>
+                        </div>
+                        <!-- Add more tasks as necessary -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function handleStatusChange(selectElement) {
+            const selectedOption = selectElement.options[selectElement.selectedIndex];
+            const url = selectedOption.getAttribute('data-url');
+            if (url) {
+                window.location.href = url;
+            }
+        }
+    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -9,11 +9,18 @@ from ceo.utility import register_labor
 
 
 def ceo_dashboard_view(request):
+    user = request.user
+    try:
+        obj = get_object_or_404(Labor, user=user)
+    except Labor.DoesNotExist:
+        raise Http404("No CEO matches the given query.")
+
     applicants = Applicant.objects.all()
     labors = Labor.objects.all()
     regi_user = User.objects.all()
 
     context = {
+        'use' : request.user,
         'applicants': applicants,
         'labors': labors,
         'users' : regi_user

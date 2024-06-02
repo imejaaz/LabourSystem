@@ -10,7 +10,6 @@ def dashboard(request):
         obj = get_object_or_404(Labor, user=user)
     except Labor.DoesNotExist:
         raise Http404("No Labor matches the given query.")
-    print(obj)
     return render(request, 'labor/dashboard.html',{'labor':obj})
 
 def labor_application_view(request):
@@ -43,7 +42,7 @@ def application_detail_view(request, id):
     return render(request, 'labor/application_report.html', context={'application':application, 'labor':labor})
 def submit_application_view(request, id):
     application = get_object_or_404(Application, id=id)
-    application.status = 'Submitted'
+    application.status = 'submitted'
     application.save()
     return redirect('labor:application')
 

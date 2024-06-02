@@ -4,182 +4,111 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Supervisor Dashboard</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <style>
         body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    display: flex;
-    background-color: #f4f7fc;
-}
-
-.sidebar {
-    width: 250px;
-    background-color: #007BFF;
-    color: #fff;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-}
-
-.logo {
-    font-size: 24px;
-    margin-bottom: 20px;
-}
-
-.nav {
-    width: 100%;
-}
-
-.nav-item {
-    display: block;
-    padding: 15px;
-    color: #fff;
-    text-decoration: none;
-    margin: 10px 0;
-    text-align: center;
-    border-radius: 8px;
-}
-
-.nav-item:hover {
-    background-color: #0056b3;
-}
-
-.main-content {
-    flex: 1;
-    padding: 20px;
-}
-
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.header h1 {
-    margin: 0;
-}
-
-.search-bar input {
-    padding: 10px;
-    width: 200px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-}
-
-.overview {
-    display: flex;
-    justify-content: space-between;
-}
-
-.profile, .stats, .calendar {
-    background-color: #fff;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.profile {
-    flex: 1;
-    margin-right: 20px;
-}
-
-.profile img {
-    width: 50px;
-    border-radius: 50%;
-    margin-right: 20px;
-}
-
-.profile-info {
-    display: inline-block;
-    vertical-align: top;
-}
-
-.growth-analyst {
-    margin-top: 20px;
-}
-
-.stats {
-    flex: 1;
-    display: flex;
-    justify-content: space-around;
-    margin-right: 20px;
-}
-
-.stat {
-    text-align: center;
-}
-
-.calendar {
-    flex: 2;
-}
-
-.calendar-content {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-}
-
-.day {
-    background-color: #e9f0ff;
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-}
-
-.tasks .task {
-    background-color: #ffefef;
-    padding: 15px;
-    border-radius: 10px;
-    margin-bottom: 10px;
-}
-
+            font-family: Arial, sans-serif;
+            margin: 0;
+            display: flex;
+            background-color: #f4f7fc;
+        }
+        .sidebar {
+            width: 250px;
+            background-color: #007BFF;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        .logo {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .nav-item {
+            display: block;
+            padding: 15px;
+            color: #fff;
+            text-decoration: none;
+            margin: 10px 0;
+            text-align: center;
+            border-radius: 8px;
+        }
+        .nav-item:hover {
+            background-color: #0056b3;
+        }
+        .main-content {
+            flex: 1;
+            padding: 20px;
+        }
+        .profile img {
+            width: 50px;
+            border-radius: 50%;
+            margin-right: 20px;
+        }
+        .growth-analyst {
+            margin-top: 20px;
+        }
+        .calendar-content .day {
+            background-color: #e9f0ff;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .tasks .task {
+            background-color: #ffefef;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 <body>
     <div class="sidebar">
         <div class="logo">Logo</div>
-        <nav class="nav">
-            <a href="#" class="nav-item">Dashboard</a>
-            <a href="#" class="nav-item">Teams</a>
-            <a href="#" class="nav-item">Projects</a>
-            <a href="#" class="nav-item">Settings</a>
+        <nav class="nav flex-column w-100">
+            <a href="#" class="nav-item nav-link">Dashboard</a>
+            <a href="#" class="nav-item nav-link">Teams</a>
+            <a href="#" class="nav-item nav-link">Projects</a>
+            <a href="{% url 'supervisor:manage_application' %}" class="nav-item nav-link">Application</a>
+            <a href="#" class="nav-item nav-link">Settings</a>
         </nav>
     </div>
     <div class="main-content">
-        <header class="header">
-            <h1>Overview</h1>
+        <header class="header d-flex justify-content-between align-items-center mb-4">
+            <h1>Supervisor Dashboard</h1>
             <div class="search-bar">
-                <input type="text" placeholder="Search...">
+                <input type="text" class="form-control" placeholder="Search...">
             </div>
         </header>
-        <div class="overview">
-            <div class="profile">
-                <img src="profile.jpg" alt="Profile Picture">
-                <div class="profile-info">
-                    <h2>Patrick Kennedy</h2>
-                    <p>patrick@company.com</p>
+        <div class="overview d-flex">
+            <div class="profile bg-white p-4 rounded shadow-sm mr-4">
+                <div class="d-flex align-items-center mb-3">
+                    <img src="profile.jpg" alt="Profile Picture">
+                    <div class="profile-info">
+                        <h2>{{user.username}}</h2>
+                        <p>{{user.email}}</p>
+                    </div>
                 </div>
                 <div class="growth-analyst">
                     <h3>Growth Analyst</h3>
                     <div class="chart">[Chart]</div>
                 </div>
             </div>
-            <div class="stats">
-                <div class="stat">
+            <div class="stats d-flex bg-white p-4 rounded shadow-sm mr-4">
+                <div class="stat text-center mr-4">
                     <h3>Projects in Progress</h3>
                     <p>34</p>
                 </div>
-                <div class="stat">
+                <div class="stat text-center">
                     <h3>Completion Rate</h3>
                     <p>92%</p>
                 </div>
             </div>
-            <div class="calendar">
+            <div class="calendar bg-white p-4 rounded shadow-sm flex-grow-1">
                 <h3>Calendar</h3>
-                <div class="calendar-content">
+                <div class="calendar-content d-flex justify-content-between mb-3">
                     <div class="day">7</div>
                     <div class="day">8</div>
                     <div class="day">9</div>
@@ -201,5 +130,9 @@
             </div>
         </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
+h

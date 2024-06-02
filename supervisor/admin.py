@@ -3,7 +3,7 @@ from .models import Application, ApplicationDocument, ReviewerComment
 
 @admin.register(Application)
 class ApplicationAdmin(admin.ModelAdmin):
-    list_display = ('labor', 'title', 'status', 'date_submitted')
+    list_display = ('title', 'app_id', 'status', 'date_submitted')
     list_filter = ('status',)
     search_fields = ('labor__name', 'title', 'description')
     readonly_fields = ('date_submitted',)
