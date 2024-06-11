@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supervisor Dashboard</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            display: flex;
+            background-color: #f4f7fc;
+        }
+        .sidebar {
+            width: 250px;
+            background-color: #007BFF;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        .logo {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .nav-item {
+            display: block;
+            padding: 15px;
+            color: #fff;
+            text-decoration: none;
+            margin: 10px 0;
+            text-align: center;
+            border-radius: 8px;
+        }
+        .nav-item:hover {
+            background-color: #0056b3;
+        }
+        .main-content {
+            flex: 1;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo">Logo</div>
+        <nav class="nav flex-column w-100">
+            <a href="#" class="nav-item nav-link">Dashboard</a>
+            <a href="{% url 'supervisor:attandance' %}" class="nav-item nav-link">Attendance</a>
+            <a href="#" class="nav-item nav-link">Projects</a>
+            <a href="{% url 'supervisor:manage_application' %}" class="nav-item nav-link">Application</a>
+            <a href="#" class="nav-item nav-link">Settings</a>
+        </nav>
+    </div>
+    <div class="main-content">
+        <header class="header d-flex justify-content-between align-items-center mb-4">
+            <h1>Attendance Management</h1>
+
+            {% for msg in messages %}
+            <div class="alert alert-success" role="alert">    {{msg}}        </div>
+            {% endfor %}
+
+            <div class="search-bar">
+                <input type="text" class="form-control" placeholder="Search...">
+            </div>
+        </header>
+        <div class="container">
+            <div class="card mb-4">
+                <div class="card-header">
+                    Add Attendance Record
+                </div>
+                <div class="card-body">
+                    <form action="{%  url 'supervisor:attandance' %}" method="POST">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="labor">Labor</label>
+                            <select class="form-control" id="labor" name="labor">
+                                {% for labor in labors %}
+                                    <option value="{{ labor.id }}">{{ labor.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="date">Date</label>
+                            <input type="date" class="form-control" id="date" name="date">
+                        </div>
+                        <div class="form-group">
+                            <label for="check_in">Check-in Time</label>
+                            <input type="time" class="form-control" id="check_in" name="check_in">
+                        </div>
+                        <div class="form-group">
+                            <label for="check_out">Check-out Time</label>
+                            <input type="time" class="form-control" id="check_out" name="check_out">
+                        </div>
+                        <div class="form-group">
+                            <label for="extra_hours">Extra Hours</label>
+                            <input type="number" class="form-control" id="extra_hours" name="extra_hours" min="0" step="0.5">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    Attendance Records
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Labor</th>
+                                <th>Date</th>
+                                <th>Check-in Time</th>
+                                <th>Check-out Time</th>
+                                <th>Extra Hours</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for record in attendance_records %}
+                                <tr>
+                                    <td>{{ record.labor }}</td>
+                                    <td>{{ record.date }}</td>
+                                    <td>{{ record.check_in|default:"N/A" }}</td>
+                                    <td>{{ record.check_out|default:"N/A" }}</td>
+                                    <td>{{ record.extra_hours }}</td>
+                                    <td>
+                                        <a href="{% url 'supervisor:edit-attandance' record.id %}" class="btn btn-sm btn-warning">Edit</a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

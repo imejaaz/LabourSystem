@@ -22,7 +22,7 @@ admin.site.register(Labor, LaborAdmin)
 
 @admin.register(Attendance)
 class AttendanceAdmin(admin.ModelAdmin):
-    list_display = ('labor', 'date', 'check_in', 'status')
+    list_display = ('labor', 'date', 'check_in', 'check_out',  'status')
     list_filter = ('status', 'date')
     search_fields = ('labor__name', 'date')
     date_hierarchy = 'date'
@@ -30,8 +30,7 @@ class AttendanceAdmin(admin.ModelAdmin):
 
 @admin.register(HourlyAttendance)
 class HourlyAttendanceAdmin(admin.ModelAdmin):
-    list_display = ('attendance', 'check_in', 'status')
-    list_filter = ('status',)
+    list_display = ('attendance', 'check_in')
     search_fields = ('attendance__labor__name', 'attendance__date')
     date_hierarchy = 'attendance__date'
     readonly_fields = ('check_in',)

@@ -62,9 +62,11 @@ class Attendance(models.Model):
     ]
 
     labor = models.ForeignKey(Labor, on_delete=models.CASCADE, related_name="attendance")
-    date = models.DateField(auto_now_add=True)
-    check_in = models.DateTimeField(auto_now_add=True)
+    date = models.DateField(auto_now=True)
+    check_in = models.TimeField(blank=True, null=True, default=None)
+    check_out = models.TimeField(blank=True, null=True, default=None)
     status = models.CharField(max_length=10, choices=ATTENDANCE_CHOICES)
+
 
     def save(self, *args, **kwargs):
         if not self.pk:
@@ -80,18 +82,13 @@ class Attendance(models.Model):
 
 
 class HourlyAttendance(models.Model):
-    ATTENDANCE_CHOICES = [
-        ('present', 'Present'),
-        ('absent', 'Absent'),
-        ('leave', 'Leave')
-    ]
-
-    attendance = models.ForeignKey(Attendance, on_delete=models.CASCADE)
-    check_in = models.DateTimeField(auto_now_add=True)
-    status = models.CharField(max_length=10, choices=ATTENDANCE_CHOICES)
+    attendance = models.OneToOneField(Attendance, on_delete=models.CASCADE, related_name='extra_hours')
+    hours = models.IntegerField(default=0)
+    check_in = models.DateTimeField(null=True, blank=True)
+    check_out = models.DateTimeField(null=True, blank=True)
 
     def __str__(self):
-        return f"{self.attendance} - {self.status}"
+        return f'{self.hours} hours'
 
     class Meta:
         verbose_name_plural = "Hourly Attendance"

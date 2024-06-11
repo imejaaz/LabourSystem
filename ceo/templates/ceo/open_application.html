@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Application Report</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        @media print {
+            .no-print {
+                display: none;
+            }
+        }
+        .report-container {
+            margin-top: 20px;
+        }
+        .table th, .table td {
+            vertical-align: middle;
+        }
+        .print-button {
+            border: 2px solid #000; /* Adjust the thickness and color as needed */
+        }
+    </style>
+</head>
+<body>
+    <div class="container report-container">
+        <div class="text-center mb-4">
+            <h1>{{application.title}}</h1>
+        </div>
+        <div class="mb-3">
+            <button class="btn btn-primary no-print print-button" onclick="window.print()">Print Report</button>
+        </div>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Labor Name</th>
+                    <th>Labor ID</th>
+                    <th>Submitted Date</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><b>{{ labor.username }}</b></td>
+                    <td>{{ application.id }}</td>
+                    <td>{{ application.date_submitted }}</td>
+                    <td>{{ application.status }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <div>
+            <h3>Description:</h3>
+        </div>
+        <p>
+            {{application.description}}
+        </p>
+        <div>
+            <h3>CEO Review:</h3>
+        </div>
+        <form method="post" action="{% url 'ceo:open_application' application.id %}">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="review" class="form-label">Review</label>
+                <textarea class="form-control" id="review" name="review" rows="4" required></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="decision" class="form-label">Decision</label>
+                <select class="form-select" id="decision" name="decision" required>
+                    <option value="accepted">Accept</option>
+                    <option value="rejected">Reject</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-success">Submit Review</button>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

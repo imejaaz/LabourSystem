@@ -4,6 +4,9 @@ from .models import *
 from django.shortcuts import get_object_or_404
 from .models import Labor
 from supervisor.models import Application, ApplicationDocument
+from django.utils import timezone
+from datetime import date, datetime
+from django.contrib import messages
 def dashboard(request):
     user = request.user
     try:
@@ -51,3 +54,38 @@ def delete_application_view(request, id):
     application.delete()
     return redirect('labor:application')
 
+# attendacne views...............
+
+
+def attendance_view(request):
+    if request.method=='POST':
+        action = request.POST.get('action')
+        print('action is: ', action)
+        if action == "check-in":
+            try:
+                labor = request.user.labors
+                Attendance.objects.create(labor=labor, status='present', check_in=datetime.now())
+                messages.success(request, 'you have checked_in')
+                return redirect('labor:attendance')
+            except Exception as E:
+                messages.error(request, E)
+        if action == "check-out":
+            try:
+                labor = request.user.labors
+                rec = Attendance.objects.get(labor=request.user.labors, status='present', date=date.today())
+                rec.check_out = datetime.now()
+                rec.save()
+                messages.success(request, 'you have checked_out')
+                return redirect('labor:attendance')
+            except Exception as E:
+                messages.error(request, E)
+
+
+    attendance_records = Attendance.objects.filter(labor=request.user.labors).order_by('-date')
+    last = attendance_records.first()
+    try:
+        if last.date != date.today():
+            last = None
+    except Exception as E:
+        print(E)
+    return render(request, 'labor/attendance.html', context={'attendance_records': attendance_records, 'today':last})

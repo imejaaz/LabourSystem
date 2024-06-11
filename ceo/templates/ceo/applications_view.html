@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Application Manage Portal</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="text-center">Application Manage Portal</h1>
+                <div class="card mt-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Under Review Applications</h5>
+                        <p class="card-text">Number of Under Review Applications: {{ applications|length }}</p>
+                    </div>
+
+
+                    <div class="mt-1 ml-2 mr-1">
+                    <table class="table table-sm table-dark">
+  <thead>
+    <tr>
+      <th scope="col">Sr.</th>
+      <th scope="col">Applicant Name</th>
+      <th scope="col">Applicant labor ID</th>
+      <th scope="col">Application ID</th>
+      <th scope="col">Sumission Date</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for app in applications %}
+    <tr>
+      <th scope="row">{{ forloop.counter }}</th>
+      <td>{{ app.labor.username }}</td>
+      <td>{{app.app_id}}</td>
+      <td>{{ app.app_id }}</td>
+      <td>{{ app.date_submitted }}</td>
+      <td> <a href="{% url 'ceo:open_application' app.id %}"> Click to Open </a> </td>
+    </tr>
+  {% endfor %}
+
+  </tbody>
+</table>
+
+</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

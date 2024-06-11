@@ -6,6 +6,7 @@ from django.http import HttpResponse
 from django.contrib.auth import get_user_model
 User = get_user_model()
 from ceo.utility import register_labor
+from supervisor.models import Application, ReviewerComment
 
 
 def ceo_dashboard_view(request):
@@ -18,12 +19,13 @@ def ceo_dashboard_view(request):
     applicants = Applicant.objects.all()
     labors = Labor.objects.all()
     regi_user = User.objects.all()
-
+    applications = Application.objects.filter(status='under_review')
     context = {
         'use' : request.user,
         'applicants': applicants,
         'labors': labors,
-        'users' : regi_user
+        'users' : regi_user,
+        'applications' : applications
     }
 
     return render(request, 'ceo/dashboard.html',context)
@@ -49,3 +51,21 @@ def applicant_record(request, id):
 
     applicant = get_object_or_404(Applicant, id=id)
     return render(request, 'ceo/applicant_profile.html', context={'applicant':applicant})
+
+def labor_applications_view(request):
+    applications = Application.objects.filter(status='under_review')
+    return render(request, 'ceo/applications_view.html', context={'applications':applications})
+def open_application(request, id):
+    application = Application.objects.get(id=id)
+    if request.method == 'POST':
+        decision = request.POST.get('decision')
+        review = request.POST.get('review')
+        comment = ReviewerComment.objects.create(
+            application=application,
+            comment=review
+        )
+        application.status = decision
+        application.save()
+        return redirect('ceo:labor_application')
+
+    return render(request, 'ceo/open_application.html', context={'application':application})
