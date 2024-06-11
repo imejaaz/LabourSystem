@@ -1,14 +1,15 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from recruitment.models import Applicant
-from labor.models import Labor
+from labor.models import Labor, Attendance, HourlyAttendance
 from django.contrib import messages
 from django.http import HttpResponse
 from django.contrib.auth import get_user_model
 User = get_user_model()
+from datetime import date
 from ceo.utility import register_labor
 from supervisor.models import Application, ReviewerComment
-
-
+from .utility import calculate_monthly_salary_for_employee
+from .models import Salary
 def ceo_dashboard_view(request):
     user = request.user
     try:
@@ -69,3 +70,17 @@ def open_application(request, id):
         return redirect('ceo:labor_application')
 
     return render(request, 'ceo/open_application.html', context={'application':application})
+
+# salaries calculation.......
+def calculate_monthly_salaries(request):
+    today = date.today()
+    month = today.month
+    year = today.year
+    employees = Labor.objects.all()
+    for employee in employees:
+        calculate_monthly_salary_for_employee(employee, year, month)
+    return redirect('ceo:salaries')
+
+def salaries_view(request):
+    salaries = Salary.objects.all()
+    return render(request, 'ceo/salaries.html', {'salaries': salaries})

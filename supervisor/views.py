@@ -42,5 +42,4 @@ def edit_attandacne_view(request, id):
         record.save()
         messages.success(request, 'Extra hours are added')
         return redirect('supervisor:attandance')
-
     return render(request,'supervisor/attandance_edit.html' ,context={'attandance':attandance})

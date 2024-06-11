@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import SalaryAdjustment, SalaryRecord, Project
+from .models import SalaryAdjustment, Salary, Project
 
 class SalaryAdjustmentAdmin(admin.ModelAdmin):
     list_display = ('id', 'amount', 'percentage', 'date', 'reason', 'type', 'added_by')
@@ -12,7 +12,7 @@ class SalaryAdjustmentAdmin(admin.ModelAdmin):
     #     return obj.labor.name if obj.labor else None
     # get_labor_name.short_description = 'Labor'
 class SalaryRecordAdmin(admin.ModelAdmin):
-    list_display = ('labor', 'amount', 'month', 'days_worked', 'extra_hours', 'adjustment', 'status')
+    list_display = ('labor', 'month', 'days_worked', 'adjustment', 'status')
     list_filter = ('status', )
     search_fields = ('labor__name', 'month')
     list_per_page = 20
@@ -26,4 +26,4 @@ class ProjectAdmin(admin.ModelAdmin):
 
 admin.site.register(Project, ProjectAdmin)
 admin.site.register(SalaryAdjustment, SalaryAdjustmentAdmin)
-admin.site.register(SalaryRecord, SalaryRecordAdmin)
+admin.site.register(Salary, SalaryRecordAdmin)
