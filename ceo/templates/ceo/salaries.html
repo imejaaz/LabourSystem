@@ -8,7 +8,10 @@
 </head>
 <body>
     <div class="container mt-5">
-        <h1 class="text-center mb-4">Employee Salaries</h1>
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1 class="text-center">Employee Salaries</h1>
+            <a href="{% url 'ceo:calculate-salaries' %}" class="btn btn-primary">Calculate Salaries</a>
+        </div>
         <table class="table table-bordered table-hover">
             <thead class="thead-dark">
                 <tr>
@@ -32,7 +35,7 @@
                         <td>{{ salary.gross_salary }}</td>
                         <td>{{ salary.days_worked }}</td>
                         <td>{{ salary.extra_hours_wages }}</td>
-                        <td>{{ salary.adjustment.amount }}</td>
+                        <td>{{ salary.adjustment }}</td>
                         <td>{{ salary.month|date:"F Y" }}</td>
                         <td>{{ salary.get_status_display }}</td>
                     </tr>

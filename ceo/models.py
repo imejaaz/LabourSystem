@@ -20,9 +20,9 @@ class SalaryAdjustment(models.Model):
 
     def __str__(self):
         if self.amount is not None:
-            return f"{self.get_type_display()} of {self.amount} on {self.date} added by {self.added_by}"
+            return f"{self.get_type_display()} of {self.amount} "
         elif self.percentage is not None:
-            return f"{self.get_type_display()} of {self.percentage}% on {self.date} added by {self.added_by}"
+            return f"{self.get_type_display()} of {self.percentage}%"
 
 class Salary(models.Model):
     STATUS_CHOICES = [
