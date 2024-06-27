@@ -13,7 +13,7 @@ def dashboard(request):
         obj = get_object_or_404(Labor, user=user)
     except Labor.DoesNotExist:
         raise Http404("No Labor matches the given query.")
-    return render(request, 'labor/dashboard.html',{'labor':obj})
+    return render(request, 'labour/dashboard.html',{'labor':obj})
 
 def labor_application_view(request):
     if request.method == 'POST':
@@ -88,4 +88,4 @@ def attendance_view(request):
             last = None
     except Exception as E:
         print(E)
-    return render(request, 'labor/attendance.html', context={'attendance_records': attendance_records, 'today':last})
+    return render(request, 'labour/attendance.html', context={'attendance_records': attendance_records, 'today':last})

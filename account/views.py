@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect
 from account.models import User
+from django.http import HttpResponseRedirect
 from django.contrib.auth.hashers import make_password
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
+
 def login_view(request):
     if request.method == 'POST':
         email = request.POST.get('email')
@@ -23,28 +25,35 @@ def login_view(request):
             except Exception as e:
                 return redirect('recruitment:dashboard')
         else:
-
             messages.error(request, 'invalid credentials')
-            redirect('account:login')
-    return render(request, 'account/login.html')
+            return HttpResponseRedirect(request.path_info)
+    return render(request, 'auth/login.html')
+
 def signup_view(request):
     if request.method == 'POST':
         email = request.POST.get('email')
+        first_name = request.POST.get('first_name')
+        last_name = request.POST.get('last_name')
         password = request.POST.get('password')
         confirm_password = request.POST.get('confirm_password')
         print(email, password, confirm_password)
         if password != confirm_password:
             messages.error(request, 'password and confrim password does not match!')
-            return render(request, 'account/signup.html')
+            return HttpResponseRedirect(request.path_info)
         if User.objects.filter(email=email).exists():
             messages.error(request, 'Email already exists')
-            return render(request, 'account/signup.html')
-        user = User.objects.create(email=email, password=make_password(password))
+            return HttpResponseRedirect(request.path_info)
+        user = User.objects.create(
+            email=email,
+            first_name=first_name,
+            last_name=last_name, 
+            password=make_password(password)
+            )
         user.save()
         messages.success(request, 'User registered successfully!')
         return redirect('account:login')
     else:
-        return render(request, 'account/signup.html')
+        return render(request, 'auth/register.html')
 
 def logout_view(request):
     logout(request)

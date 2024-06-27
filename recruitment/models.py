@@ -14,7 +14,7 @@ class Applicant(models.Model):
     last_name = models.CharField(max_length=100, verbose_name="Name")
     dob = models.DateField()
     cnic = models.CharField(max_length=13, unique=True, verbose_name="CNIC")
-    phone = models.CharField(max_length=11, unique=True, verbose_name="Phone Number")
+    phone = models.CharField(max_length=13, unique=True, verbose_name="Phone Number")
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES, verbose_name="Gender")
     address = models.TextField(verbose_name="Address")
     skill = models.TextField(verbose_name="Skill Set")
