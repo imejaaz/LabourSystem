@@ -7,8 +7,6 @@ class Applicant(models.Model):
         ('F', 'Female'),
         ('O', 'Other'),
     ]
-
-
     user = models.ForeignKey(User, on_delete = models.CASCADE,  related_name = 'applicant')
     first_name = models.CharField(max_length=100, verbose_name="Name")
     last_name = models.CharField(max_length=100, verbose_name="Name")

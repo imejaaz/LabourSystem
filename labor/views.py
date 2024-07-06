@@ -37,7 +37,7 @@ def labor_application_view(request):
     labor = get_object_or_404(Labor, user=user)
     application = labor.applications.all()
 
-    return render(request, 'labor/application.html', context={'labor':labor, 'applications':application})
+    return render(request, 'labour/application.html', context={'labor':labor, 'applications':application})
 def application_detail_view(request, id):
     application = get_object_or_404(Application, id=id)
     user = request.user
