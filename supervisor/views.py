@@ -4,14 +4,32 @@ from django.http import HttpResponse
 from datetime import datetime, date
 from labor.models import Attendance, HourlyAttendance
 from django.contrib import messages
+from ceo.models import Project, Departments
 def supervisor_dashboard(request):
     user = request.user
     try:
-        user = get_object_or_404(Labor, user=user)
+        supervisorObj = get_object_or_404(Labor, user=user, post="supervisor")
     except Labor.DoesNotExist:
         raise Http404("No Supervisor matches the given query.")
+    
+    department = supervisorObj.department
+    projectsCount = Project.objects.filter(supervisor=supervisorObj).count() 
+    projects = Project.objects.filter(supervisor=supervisorObj)
+    membersCount = Labor.objects.filter(post='labor', department=department).count()
+    membersList = Labor.objects.filter(post='labor', department=department)
+    print("projects count: ", projectsCount)
+    
+    context = {
+        "department": department,
+        "projectsCount": projectsCount,
+        "projects": projects,
+        "membersCount": membersCount,
+        "membersList": membersList,
+        "supervisorObj": supervisorObj
+    }
+    
 
-    return render(request, 'supervisor/dashboard.html', context={'user':user})
+    return render(request, 'supervisor/dashboard.html', context)
 
 def labor_application_view(request):
     applications = Application.objects.filter(status='submitted')

@@ -1,7 +1,10 @@
+
 from django.db import models
 from account.models import User
 from datetime import timezone, date
 from django.core.exceptions import ValidationError
+
+
 class Labor(models.Model):
     POST_CHOICES = [
         ('labor', 'Labor'),
@@ -27,7 +30,9 @@ class Labor(models.Model):
     basic_pay = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Basic Pay")
     date_of_birth = models.DateField(verbose_name="Date of Birth")
     date_of_hire = models.DateField(verbose_name="Date of Hire", auto_now_add=True)
-
+    department = models.ForeignKey("ceo.Departments", on_delete=models.CASCADE, related_name="labour_department")
+    image = models.ImageField(upload_to="LabourProfile", height_field=None, width_field=None, max_length=None)
+    designation = models.ForeignKey("ceo.Designations", on_delete=models.CASCADE)
     def username(self):
         return f'{self.first_name} {self.last_name}'
     def save(self, *args, **kwargs):

@@ -23,15 +23,13 @@ def labor_application_view(request):
         desc = request.POST.get('desc')
         doc1 = request.FILES.get('doc_file1')
         doc2 = request.FILES.get('doc_file2')
-        doc3 = request.FILES.get('doc_file3')
         app = Application.objects.create(labor = labor, title=title, description=desc)
         print(app)
         if doc1:
             ApplicationDocument.objects.create(application=app, document=doc1)
         if doc2:
             ApplicationDocument.objects.create(application=app, document=doc2)
-        if doc3:
-            ApplicationDocument.objects.create(application=app, document=doc3)
+            
         return redirect('labor:application')
     user = request.user
     labor = get_object_or_404(Labor, user=user)

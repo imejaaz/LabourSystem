@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import SalaryAdjustment, Salary, Project
+from .models import SalaryAdjustment, Salary, Project, Departments, Designations
+from .forms import ProjectForm
 
 class SalaryAdjustmentAdmin(admin.ModelAdmin):
     list_display = ('id', 'amount', 'percentage', 'date', 'reason', 'type', 'added_by')
@@ -20,10 +21,13 @@ class SalaryRecordAdmin(admin.ModelAdmin):
 
 
 class ProjectAdmin(admin.ModelAdmin):
-    list_display = ('name', 'start_date', 'end_date', 'progress_report')
+    form = ProjectForm
+    list_display = ('name', 'start_date', 'deadline', 'progress')
     search_fields = ('name',)
     filter_horizontal = ('members',)
 
 admin.site.register(Project, ProjectAdmin)
 admin.site.register(SalaryAdjustment, SalaryAdjustmentAdmin)
 admin.site.register(Salary, SalaryRecordAdmin)
+admin.site.register(Departments)
+admin.site.register(Designations)

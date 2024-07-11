@@ -44,12 +44,38 @@ class Salary(models.Model):
 
 
 class Project(models.Model):
+    CURRENT_STATUS = [
+        ("pending", "Pending"),
+        ("todo", "Todo"),
+        ("doing", "Doing"),
+        ("testing", "Testing"),
+        ("completed", "Completed"),
+        ("cancelled", "Cancelled"),
+        
+    ]
     name = models.CharField(max_length=255)
     description = models.TextField()
     start_date = models.DateField()
-    end_date = models.DateField(null=True, blank=True)
-    progress_report = models.DecimalField(max_digits=5, decimal_places=2, default=0.00)
-    members = models.ManyToManyField(User, related_name='projects')
+    deadline = models.DateField(null=True, blank=True)
+    currentStatus = models.CharField(choices=CURRENT_STATUS, max_length=15, default="pending")
+    progress = models.DecimalField(max_digits=5, decimal_places=2, default=0.00)
+    supervisor = models.ForeignKey(Labor, blank=True, null=True, on_delete=models.CASCADE)
+    members = models.ManyToManyField(Labor, related_name='projects', blank=True, null=True)
 
     def __str__(self):
         return self.name
+    
+    
+class Departments(models.Model):
+    name = models.CharField(max_length=255)
+    labor = models.ManyToManyField(Labor, related_name='departments', null=True, blank=True)
+    
+    def __str__(self):
+        return self.name
+    
+    
+class Designations(models.Model):
+    title = models.CharField(max_length=255)
+    
+    def __str__(self):
+        return self.title
